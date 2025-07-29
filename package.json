@@ -2,17 +2,16 @@
 	"name": "example-with-tailwindcss",
 	"type": "module",
 	"scripts": {
-		"dev": "vinxi dev",
-		"build": "vinxi build",
-		"start": "vinxi start",
+		"dev": "bunx --bun vinxi dev",
+		"build": "bunx --bun vinxi build",
+		"start": "bunx --bun vinxi start",
 		"db:generate": "drizzle-kit generate",
-		"db:migrate": "drizzle-kit migrate",
+		"db:migrate": "bun run src/db/index.ts",
 		"db:studio": "drizzle-kit studio"
 	},
 	"dependencies": {
 		"@solidjs/router": "^0.15.0",
 		"@solidjs/start": "^1.1.0",
-		"better-sqlite3": "^12.2.0",
 		"drizzle-kit": "^0.31.4",
 		"drizzle-orm": "^0.44.3",
 		"solid-js": "^1.9.5",
@@ -21,7 +20,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.1.2",
 		"@tailwindcss/vite": "^4.0.7",
-		"@types/better-sqlite3": "^7.6.13",
+		"@types/bun": "^1.2.19",
 		"tailwindcss": "^4.0.7"
 	},
 	"engines": {
