@@ -1,33 +1,67 @@
-# SolidStart
+# Time Since Task
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+A simple and effective way to manage your recurring tasks.
 
-## Creating a project
+## Product Description
 
+Time Since Task helps you keep track of recurring tasks with real-time timers and visual indicators. Add tasks with a name and frequency, see how long it's been since each was last completed, and get alerted when something is overdue. Mark tasks as complete to reset their timers and stay on schedule.
+
+### How it works
+1. **Add Tasks**: Create tasks with a name and frequency (in hours). For example, "Water plants" every 48 hours.
+2. **Track Progress**: Each task shows how long it's been since it was last completed. The timer updates in real-time.
+3. **Stay on Schedule**: When a task goes overdue (past its frequency), it turns red to alert you.
+4. **Mark Complete**: Click "Complete" to reset the timer and track your next cycle.
+
+### Features
+- ✓ Real-time timers that update every second
+- ✓ Visual indicators for overdue tasks
+- ✓ Persistent storage using SQLite (via Drizzle ORM)
+- ✓ Clean, responsive design
+- ✓ Built with SolidJS for optimal performance
+- ✓ Tailscale Serve integration for user identity (shows who last completed a task)
+
+---
+
+## Getting Started
+
+### Prerequisites
+- [Bun](https://bun.sh/) (for running and installing dependencies)
+- [Drizzle Kit](https://orm.drizzle.team/docs/overview) (for DB migrations)
+
+### Install dependencies
 ```bash
-# create a new project in the current directory
-npm init solid@latest
-
-# create a new project in my-app
-npm init solid@latest my-app
+bun install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+### Database: Generate & Migrate
+Generate the SQL migration files (if you change the schema):
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+bun run db:generate
 ```
 
-## Building
+Run the migrations to update your SQLite database:
+```bash
+bun run db:migrate
+```
 
-Solid apps are built with _presets_, which optimise your project for deployment to different environments.
+### Running the App
+Start the development server:
+```bash
+bun run dev
+```
 
-By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
+### Running with Tailscale Serve
+To serve the app with Tailscale identity headers:
+1. Build the app:
+   ```bash
+   bun run build
+   ```
+2. Start the server:
+   ```bash
+   bun run start
+   ```
+3. Use `tailscale serve` to expose your local server to your tailnet. The app will automatically use Tailscale identity headers to show who last completed each task.
 
-## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
-# time-since-task
+## License
+
+MIT
